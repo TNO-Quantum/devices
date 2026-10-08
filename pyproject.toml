@@ -1,0 +1,62 @@
+[build-system]
+requires = ["setuptools", "setuptools-scm", "pennylane"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tno.quantum.devices"
+description = "Devices"
+readme = "README.md"
+authors = [{ name = "TNO Quantum Code Lab", email = "tnoquantum@tno.nl" }]
+maintainers = [{ name = "TNO Quantum Code Lab", email = "tnoquantum@tno.nl" }]
+keywords = ["TNO", "Quantum", "Devices"]
+license = "Apache-2.0"
+license-files = ["LICENSE"]
+classifiers = [
+    'Intended Audience :: Developers',
+    'Intended Audience :: Information Technology',
+    'Intended Audience :: Science/Research',
+    'Operating System :: OS Independent',
+    'Programming Language :: Python :: 3',
+    'Programming Language :: Python :: 3.11',
+    'Programming Language :: Python :: 3.12',
+    'Programming Language :: Python :: 3.13',
+    'Programming Language :: Python :: 3.14',
+    'Typing :: Typed',
+]
+dynamic = ["version"]
+requires-python = ">=3.11"
+dependencies = ["pennylane", "pennylane-qiskit", "tno.quantum.utils"]
+
+[project.urls]
+Homepage = "https://github.com/TNO-Quantum/"
+Documentation = "https://github.com/TNO-Quantum/"
+Source = "https://github.com/TNO-Quantum/devices"
+
+[project.optional-dependencies]
+tests = ["pytest>=8.1.1", "pytest-cov>=4.1.0"]
+ibm = [
+    "qiskit>=2",
+    "qiskit-ibm-runtime",  # IBM
+    "qiskit-ibm-provider", # IBM
+]
+azure = [
+    "qiskit>=2",
+    "azure-core",                   # Azure
+    "azure-identity",               # Azure
+    "azure-quantum[qiskit]>=3.5.0", # Azure
+    "azure-storage-blob",           # Azure
+]
+
+[project.entry-points."pennylane.plugins"]
+"ibm.remote" = "tno.quantum.devices.ibm:IBMDevice"
+"azure.remote" = "tno.quantum.devices.azure:AzureDevice"
+
+[tool.setuptools]
+platforms = ["any"]
+
+[tool.setuptools.dynamic]
+version = { attr = "tno.quantum.devices.__version__" }
+
+[tool.setuptools.package-data]
+"*" = ["py.typed"]
+

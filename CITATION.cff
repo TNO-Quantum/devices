@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+license: Apache-2.0
+message: If you use this software, please cite it using these metadata.
+authors:
+      - name: TNO Quantum
+        city: The Hague
+        country: NL
+        email: quantumcodelab@tno.nl
+        website: https://tno.nl
+type: software
+url: https://tno.nl
+contact:
+      - name: TNO Quantum
+        city: The Hague
+        country: NL
+        email: quantumcodelab@tno.nl
+        website: https://tno.nl
+repository-code: https://github.com/TNO-Quantum/devices
+repository-artifact: https://pypi.org/project/tno.quantum.devices
+title: TNO Quantum - Devices
+version: 1.0.2
+date-released: 2026-10-08
